@@ -10,7 +10,9 @@ public class Prueba_Practica2_CarlosD {
     
     public static void main(String[] args) {
         boolean out = true;
-        
+        for (int i = 0; i < todos.length; i++) {
+            todos[i] = new Libro ("Sin nombre","Usuario",0,"Disponible","Sin dueño");
+        }
         do {
             System.out.println("***********MENU*********");
             System.out.println("1. Agregar nuevo libro a la bliblioteca");
@@ -51,10 +53,10 @@ public class Prueba_Practica2_CarlosD {
                     buscarN(todos,buscado);
                 }
                 case 5 -> {
-                    
+                    listardisponibles(todos);
                 }
                 case 6 -> {
-                    
+                    listarprestados(todos);
                 }
                 case 7 -> {
                     System.out.println("Saliendo...");
@@ -66,7 +68,8 @@ public class Prueba_Practica2_CarlosD {
     }
     public static void crearlibro (int pos, String nom){
         int idc = id();
-        todos[pos] = new Libro (nom,"Usuario",idc,"Disponible","Sin dueño");
+        todos[pos].setAutor(nom);
+        todos[pos].setID(idc);
         System.out.println("Se a creado correctamente el nuevo libro");
     }
     public static int id (){
@@ -88,12 +91,20 @@ public class Prueba_Practica2_CarlosD {
             System.out.println("no se encontro un libro con ese nombre");
         }
     }
-    
     public static void listardisponibles (Libro temp []){
-        
+        String ver = "Disponible";
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i].getEstado().contains(ver)) {
+                temp[i].toString();
+            }
+        }
     }
-    
     public static void listarprestados (Libro temp []){
-        
+        String ver = "Prestado";
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i].getEstado().contains(ver)) {
+                temp[i].toString();
+            }
+        }
     }
 }
